@@ -9,12 +9,12 @@ class Server{
         this.port = process.env.PORT;
 
         this.userPath = '/api/user';
+        this.authPath = '/api/auth';
 
         this.dbConnect();
         this.middlewares();
         this.routes();
         
-
     }
 
     async dbConnect(){
@@ -29,6 +29,8 @@ class Server{
 
     routes(){
         this.app.use(this.userPath, require('../routes/user'));
+        this.app.use(this.authPath, require('../routes/auth'))
+        
     }
 
     listen(){
