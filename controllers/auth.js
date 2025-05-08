@@ -11,7 +11,7 @@ const login = async(req = request, res = response) =>{
 
         if(!user)
             return res.status(400).send({
-                msg: 'Email is not valid.'
+                msg: 'Invalid email.'
             })
         if (!user){
             return res.status(202).json({
@@ -23,7 +23,7 @@ const login = async(req = request, res = response) =>{
                 msg:'Password is incorrect'
             })
 
-        const token = await generateJWT(user.id, user);
+        const token = await generateJWT(user.id);
 
         res.send({
             msg:'Login succeded',
