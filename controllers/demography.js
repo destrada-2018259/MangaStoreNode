@@ -25,7 +25,7 @@ const postDemography = async(req = request, res = response) => {
     const demographyDB = new Demography({demography, description});
     await demographyDB.save();
 
-    res.status(201).json({
+    res.json.status(201)({
         msg: 'Demography created',
         demographyDB
     })
