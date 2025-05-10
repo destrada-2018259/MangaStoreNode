@@ -28,7 +28,7 @@ const postUser = async(req = request, res = response) =>{
     await userDB.save();
 
     res.status(201).json({
-        msg: 'User created',
+        msg: 'User created successfully',
         userDB
     })
 }
@@ -43,7 +43,7 @@ const putUser = async (req = request, res = response) =>{
     const updatedUser = await User.findByIdAndUpdate(id, data);
 
     res.json({
-        msg: 'User updated',
+        msg: 'User updated successfully',
         updatedUser
     })
 }
@@ -54,7 +54,7 @@ const deleteUser = async(req = request, res = response) =>{
 
     const deletedUser = await User.findByIdAndDelete(id);
     res.json({
-        msg: 'User deleted',
+        msg: 'User deleted successfully',
         deletedUser
     })
 }

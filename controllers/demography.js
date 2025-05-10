@@ -26,7 +26,7 @@ const postDemography = async(req = request, res = response) => {
     await demographyDB.save();
 
     res.json.status(201)({
-        msg: 'Demography created',
+        msg: 'Demography created successfully',
         demographyDB
     })
 }
@@ -38,7 +38,7 @@ const putDemography = async(req = request, res = response) =>{
     const updatedDemography = await Demography.findByIdAndUpdate(id, data)
 
     res.json({
-        msg: 'Demography updated',
+        msg: 'Demography updated successfully',
         updatedDemography
     })
 }
@@ -49,7 +49,7 @@ const deleteDemography = async(req = request, res = response) =>{
     const deletedDemography = await Demography.findByIdAndDelete(id);
 
     res.json({
-        msg: 'Demography deleted',
+        msg: 'Demography deleted successfully',
         deletedDemography
     })
 }
