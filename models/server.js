@@ -12,6 +12,7 @@ class Server{
         this.authPath = '/api/auth';
         this.demographyPath = '/api/demography'
         this.genrePath = '/api/genre'
+        this.publisherPath = '/api/publisher'
 
         this.dbConnect();
         this.middlewares();
@@ -34,6 +35,7 @@ class Server{
         this.app.use(this.authPath, require('../routes/auth'))
         this.app.use(this.demographyPath, require('../routes/demography'))
         this.app.use(this.genrePath, require('../routes/genre'))
+        this.app.use(this.publisherPath, require('../routes/publisher'))
     }
 
     listen(){
