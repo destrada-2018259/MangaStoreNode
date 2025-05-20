@@ -19,17 +19,17 @@ router.post('/add', [
     validateFields,
 ], postPublisher)
 
-router.put('/update', [
+router.put('/update/:id', [
     validateJWT,
+    upload.single('logo'),
     check('id', 'Id is required').not().isEmpty(),
     check('id','Id must be a valid mongoID').isMongoId(),
     check('publisher', 'publisher is required').not().isEmpty(),
     check('country', 'country is required').not().isEmpty(),
     validateFields,
-    upload.single('logo')
 ], putPublisher)
 
-router.delete('', [
+router.delete('/delete/:id', [
     validateJWT,
     check('id', 'Id is required').not().isEmpty(),
     check('id','Id must be a valid mongoID').isMongoId(),

@@ -11,9 +11,8 @@ const PublisherSchema = Schema({
         type: String,
         required: true
     },
-    logo:{
-        data: Buffer,
-        contentType: String
+    logoUrl:{
+        type: String
     }
     
 })

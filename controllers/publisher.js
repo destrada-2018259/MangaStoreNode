@@ -18,11 +18,12 @@ const getPublishers = async(req = request, res = response) =>{
 const postPublisher = async(req = request, res = response) =>{
 
     const {publisher, country} = req.body;
+    const logoUrl = req.file?.path
 
     const publisherDB = new Publisher({
         publisher,
         country,
-        logo: req.file ? {data: req.file.buffer, contentType: req.file.mimetype} : null 
+        logoUrl,
     });
 
     await publisherDB.save();
@@ -40,11 +41,10 @@ const putPublisher = async(req = request, res = response) =>{
 
     const {_id, ...data} = req.body
 
-    const updatedPublisher = {data}
+    if(req.file){data.logoUrl= req.file?.path}
 
-    if(req.file){updatedPublisher.logo={data: req.file.buffer, contentType: req.file.mimetype}}
 
-    const PublisherDB = await Publisher.findByIdAndUpdate(id, updatedPublisher)
+    const PublisherDB = await Publisher.findByIdAndUpdate(id, data)
 
     res.json({
         msg: 'Publisher updated successfully',
