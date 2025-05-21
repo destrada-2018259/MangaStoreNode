@@ -55,7 +55,7 @@ const putPublisher = async(req = request, res = response) =>{
 const deletePublisher = async(req = request, res = response) =>{
     const {id} = req.params
     
-    const deletedPublisher = Publisher.findByIdAndDelete(id)
+    const deletedPublisher = await Publisher.findByIdAndDelete(id)
 
     res.json({
         msg:'Publisher deleted successfully',
